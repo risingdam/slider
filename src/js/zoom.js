@@ -1,5 +1,7 @@
 'use strict'
 
+import newElement from './slider'
+
 /**
  * Transform fuctions for canvas
  * @param {object} context - canvas.getContext('2d')
@@ -238,3 +240,5 @@ const handleZoom = async (slider, imageSource) => {
         redraw()
     }
 }
+
+export default handleZoom

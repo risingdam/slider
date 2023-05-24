@@ -1,7 +1,5 @@
 'use strict'
 
-const visibleClass = 'visible'
-
 window.addEventListener('load', () => {
 
     const sliders = document.querySelectorAll('.swiffy-slider')
@@ -34,9 +32,9 @@ window.addEventListener('load', () => {
             const slidesVisible = slider.querySelectorAll('.slide.slide-visible').length || 0
 
             if (slidesVisible < slideCount) {
-                buttons.forEach((button) => button.classList.add(visibleClass))
+                buttons.forEach((button) => button.classList.add('visible'))
             } else {
-                buttons.forEach((button) => button.classList.remove(visibleClass))
+                buttons.forEach((button) => button.classList.remove('visible'))
             }
         }
 
