@@ -118,19 +118,66 @@ p {
     pointer-events: none;
   }
 }
-.container.carousel.fullscreen .swiffy-slider,
+.container.carousel.fullscreen {
+  max-width: 100%;
+  margin: 0;
+  position: fixed;
+  inset: 0;
+  background: hsl(0, 0%, 10%);
+  z-index: 2;
+  padding: 1rem;
+  overflow: hidden;
+}
+.container.carousel.fullscreen .action.close {
+  all: unset;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  filter: drop-shadow(0 0 0.5rem hsla(0, 0%, 0%, 0.5));
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.8;
+  transition: opacity 150ms ease-out;
+}
+.container.carousel.fullscreen .action.close:before,
+.container.carousel.fullscreen .action.close:after {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 3px;
+  border-radius: 1.5px;
+  background: white;
+  transform: rotate(45deg);
+}
+.container.carousel.fullscreen .action.close:after {
+  transform: rotate(-45deg);
+}
+.container.carousel.fullscreen .action.close:hover {
+  opacity: 1;
+}
+.container.carousel.fullscreen .action.close:hover .tooltip {
+  opacity: 1;
+}
+.fullscreen .container.carousel .slider-wrapper {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  width: calc(100vw - 1rem * 2);
+}
 .container.carousel .swiffy-slider {
   position: relative;
 }
-.container.carousel.fullscreen .swiffy-slider.slider-item-ratio,
 .container.carousel .swiffy-slider.slider-item-ratio {
   --swiffy-slider-item-ratio: 1/2;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-container .slide,
+.fullscreen .container.carousel .swiffy-slider.slider-item-ratio {
+  --swiffy-slider-item-ratio: 3/5;
+}
 .container.carousel .swiffy-slider .slider-container .slide {
   overflow: hidden;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge,
 .container.carousel .swiffy-slider .action.enlarge {
   all: unset;
   position: absolute;
@@ -146,9 +193,7 @@ p {
   visibility: hidden;
   pointer-events: none;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge:before,
 .container.carousel .swiffy-slider .action.enlarge:before,
-.container.carousel.fullscreen .swiffy-slider .action.enlarge:after,
 .container.carousel .swiffy-slider .action.enlarge:after {
   content: '';
   position: absolute;
@@ -157,31 +202,25 @@ p {
   box-sizing: border-box;
   inset: 0;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge:after,
 .container.carousel .swiffy-slider .action.enlarge:after {
   width: 70%;
   height: 70%;
   top: unset;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge:hover,
 .container.carousel .swiffy-slider .action.enlarge:hover {
   opacity: 1;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge:hover .tooltip,
 .container.carousel .swiffy-slider .action.enlarge:hover .tooltip {
   opacity: 1;
 }
-.container.carousel.fullscreen .swiffy-slider .action.enlarge.visible,
 .container.carousel .swiffy-slider .action.enlarge.visible {
   visibility: visible;
   pointer-events: all;
 }
-.fullscreen .container.carousel.fullscreen .swiffy-slider .action.enlarge,
 .fullscreen .container.carousel .swiffy-slider .action.enlarge {
   visibility: hidden;
   pointer-events: none;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav,
 .container.carousel .swiffy-slider .slider-nav {
   top: calc(50% - 7rem / 2);
   transform: translateY(-50%);
@@ -191,7 +230,6 @@ p {
   pointer-events: none;
   height: calc(100% - 7rem);
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav:before,
 .container.carousel .swiffy-slider .slider-nav:before {
   position: absolute;
   content: '';
@@ -200,7 +238,6 @@ p {
   left: 1rem;
   transition: transform 250ms ease-out;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav:after,
 .container.carousel .swiffy-slider .slider-nav:after {
   position: relative;
   transform: translateX(0.5rem);
@@ -209,52 +246,42 @@ p {
   transition: transform 250ms ease-out;
 }
 @media screen and (max-width:  62rem) {
-  .container.carousel.fullscreen .swiffy-slider .slider-nav:after,
   .container.carousel .swiffy-slider .slider-nav:after {
     transform: translateX(0.3785rem) scale(0.6);
   }
 }
 @media screen and (max-width:  48rem) {
-  .container.carousel.fullscreen .swiffy-slider .slider-nav:before,
   .container.carousel .swiffy-slider .slider-nav:before {
     transform: scale(0.75);
   }
-  .container.carousel.fullscreen .swiffy-slider .slider-nav:after,
   .container.carousel .swiffy-slider .slider-nav:after {
     transform: translateX(0.3785rem) scale(0.5);
   }
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav.visible,
 .container.carousel .swiffy-slider .slider-nav.visible {
   opacity: 0.8;
   pointer-events: all;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav:hover,
 .container.carousel .swiffy-slider .slider-nav:hover {
   opacity: 1;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav-next,
 .container.carousel .swiffy-slider .slider-nav-next {
   left: unset;
   right: 0;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav-next:before,
 .container.carousel .swiffy-slider .slider-nav-next:before {
   left: unset;
   right: 1rem;
 }
-.container.carousel.fullscreen .swiffy-slider .slider-nav-next:after,
 .container.carousel .swiffy-slider .slider-nav-next:after {
   transform: translateX(-0.5rem) rotate(180deg);
 }
 @media screen and (max-width:  62rem) {
-  .container.carousel.fullscreen .swiffy-slider .slider-nav-next:after,
   .container.carousel .swiffy-slider .slider-nav-next:after {
     transform: translateX(-0.3785rem) scale(0.6) rotate(180deg);
   }
 }
 @media screen and (max-width:  48rem) {
-  .container.carousel.fullscreen .swiffy-slider .slider-nav-next:after,
   .container.carousel .swiffy-slider .slider-nav-next:after {
     transform: translateX(-0.3785rem) scale(0.5) rotate(180deg);
   }
@@ -266,9 +293,9 @@ p {
 }
 .container.carousel.fullscreen .slide,
 .container.carousel .slide {
-  background: hsla(0, 75%, 65%, 0.1);
   user-select: none;
   -webkit-user-select: none;
+  background: white;
 }
 .container.carousel.fullscreen .slide-image,
 .container.carousel .slide-image {
@@ -301,6 +328,7 @@ p {
   max-height: 7rem;
   top: calc(100% - 7rem);
   padding: 0.75rem 1rem 1rem;
+  background: hsla(0, 75%, 65%, 0.1);
 }
 .container.carousel.fullscreen .slide-price--title,
 .container.carousel .slide-price--title {
