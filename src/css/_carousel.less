@@ -1,13 +1,73 @@
 @slide-pricebox-height: 7rem;
 
-.container.carousel.fullscreen,
 .container.carousel {
+
+    &.fullscreen {
+        max-width: @fulscreen-width;
+        margin: 0;
+        position: fixed;
+        inset: 0;
+        background: @color-gray-900;
+        z-index: 2;
+        padding: @thumbnail-slider-gap;
+        overflow: hidden;
+
+        .action.close {
+            all: unset;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            filter: drop-shadow(0 0 0.5rem hsla(0,0%,0%,0.5));
+            cursor: pointer;
+            z-index: 2;
+            opacity: 0.8;
+            transition: opacity @transition-normal ease-out;
+
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                width: 90%;
+                height: 3px;
+                border-radius: 1.5px;
+                background: white;
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+
+            &:hover{
+                opacity: 1;
+
+                .tooltip {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .slider-wrapper {
+
+        .fullscreen & {
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            width: calc(100vw - @thumbnail-slider-gap * 2);
+        }
+    }
 
     .swiffy-slider {
         position: relative;
 
         &.slider-item-ratio {
             --swiffy-slider-item-ratio: 1/2;
+
+            .fullscreen & {
+                --swiffy-slider-item-ratio: 3/5;
+            }
         }
 
         .slider-container {
@@ -155,9 +215,9 @@
     margin: 0 auto;
 
     .slide {
-        background: fade(@color-primary-200, 10%);
         user-select: none;
         -webkit-user-select: none;
+        background: @color-white;
 
         &-image {
             height: calc(100% - @slide-pricebox-height);
@@ -189,6 +249,7 @@
             max-height: @slide-pricebox-height;
             top: calc(100% - @slide-pricebox-height);
             padding: 0.75rem 1rem 1rem;
+            background: fade(@color-primary-200, 10%);
 
             &--title {
                 display: block;

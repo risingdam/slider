@@ -153,7 +153,7 @@ window.addEventListener('load', () => {
      * @param {object} slider - The slider root element
      * @param {object} sliderEl - The swiffy slider element
      */
-    const initFullScreen = async (slider, sliderEl) => {
+    const initFullScreen = async (slider, sliderEl, containerClass) => {
 
         const buttonEnlarge = slider.querySelector('.action.enlarge')
         if (!buttonEnlarge) return // exit
@@ -161,7 +161,7 @@ window.addEventListener('load', () => {
         await buttonEnlarge.addEventListener('click', async () => {
 
             // create DOM elements
-            const fullscreenSliderDiv = newElement('div', ['container', 'gallery', 'fullscreen'])
+            const fullscreenSliderDiv = newElement('div', ['container', containerClass, 'fullscreen'])
             const rowEl = newElement('div', 'row')
             const columnEl = newElement('div', ['column', 'slider'])
             const buttonClose = newElement('button', ['action', 'close'])
@@ -191,7 +191,7 @@ window.addEventListener('load', () => {
             const fullscreenSliderEl = fullscreenSliderDiv.querySelector('.swiffy-slider')
             fullscreenSliderEl.classList.remove('slider-nav-mousedrag'); // bug: mousedrag does not work on a clone
             const enableKeyboardNav = fullscreenSliderEl.hasAttribute('data-enable-keyboard-nav')
-            const fullscreenElement = document.querySelector('.container.gallery.fullscreen')
+            const fullscreenElement = document.querySelector('.container.'+containerClass+'.fullscreen')
             const enableZoom = fullscreenSliderEl.hasAttribute('data-enable-zoom')
 
             if (thumbnails) {
@@ -379,6 +379,7 @@ window.addEventListener('load', () => {
             const enableZoom = sliderEl.hasAttribute('data-enable-zoom')
             const enableFullScreen = sliderEl.hasAttribute('data-enable-fullscreen')
             const enableKeyboardNav = sliderEl.hasAttribute('data-enable-keyboard-nav')
+            const containerClass = sliderEl.getAttribute('data-container-class')
 
             if (enableIndicators) {
                 initIndicators(sliderEl)
@@ -393,7 +394,7 @@ window.addEventListener('load', () => {
             }
 
             if (enableFullScreen) {
-                initFullScreen(slider, sliderEl)
+                initFullScreen(slider, sliderEl, containerClass)
             }
 
             if (enableKeyboardNav) {
