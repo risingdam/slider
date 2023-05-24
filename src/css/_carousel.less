@@ -1,8 +1,10 @@
 @slide-pricebox-height: 7rem;
 
+.container.carousel.fullscreen,
 .container.carousel {
 
     .swiffy-slider {
+        position: relative;
 
         &.slider-item-ratio {
             --swiffy-slider-item-ratio: 1/2;
@@ -14,6 +16,56 @@
                 overflow: hidden;
             }
         }
+
+        .action.enlarge {
+            all: unset;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 2.5rem;
+            height: 2rem;
+            filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, .5));
+            cursor: pointer;
+            z-index: 3;
+            opacity: 0.8;
+            transition: opacity @transition-normal ease-out;
+            visibility: hidden;
+            pointer-events: none;
+
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                border: 3px solid @color-white;
+                border-radius: 1.5px;
+                box-sizing: border-box;
+                inset: 0;
+            }
+
+            &:after {
+                width: 70%;
+                height: 70%;
+                top: unset;
+            }
+
+            &:hover {
+                opacity: 1;
+
+                .tooltip {
+                    opacity: 1;
+                }
+            }
+
+            &.visible {
+                visibility: visible;
+                pointer-events: all;
+            }
+
+            .fullscreen & {
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
 
         .slider-nav {
             top: calc(50% - @slide-pricebox-height / 2);
@@ -46,7 +98,7 @@
                     transform: translateX(0.3785rem) scale(0.6);
                 }
             }
-            
+
             @media @md {
                 &:before {
                     transform: scale(0.75);
@@ -55,12 +107,12 @@
                     transform: translateX(0.3785rem) scale(0.5);
                 }
             }
-            
+
             &.visible {
                 opacity: 0.8;
                 pointer-events: all;
             }
-            
+
             &:hover {
                 opacity: 1;
             }
@@ -69,12 +121,12 @@
         .slider-nav-next {
             left: unset;
             right: 0;
-            
+
             &:before {
                 left: unset;
                 right: 1rem;
             }
-            
+
             &:after {
                 transform: translateX(-0.5rem) rotate(180deg);
             }
@@ -84,7 +136,7 @@
                     transform: translateX(-0.3785rem) scale(0.6) rotate(180deg);
                 }
             }
-            
+
             @media @md {
                 &:after {
                     transform: translateX(-0.3785rem) scale(0.5) rotate(180deg);
@@ -96,11 +148,12 @@
 
 // demo content
 
+.container.carousel.fullscreen,
 .container.carousel {
-    
+
     max-width: @container-width;
     margin: 0 auto;
-    
+
     .slide {
         background: fade(@color-primary-200, 10%);
         user-select: none;
@@ -181,7 +234,7 @@
             }
         }
     }
-    
+
     &:last-of-type {
         margin-top: 4rem;
     }
