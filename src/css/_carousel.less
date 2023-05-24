@@ -1,0 +1,188 @@
+@slide-pricebox-height: 7rem;
+
+.container.carousel {
+
+    .swiffy-slider {
+
+        &.slider-item-ratio {
+            --swiffy-slider-item-ratio: 1/2;
+        }
+
+        .slider-container {
+
+            .slide {
+                overflow: hidden;
+            }
+        }
+
+        .slider-nav {
+            top: calc(50% - @slide-pricebox-height / 2);
+            transform: translateY(-50%);
+            left: 0;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            height: calc(100% - @slide-pricebox-height);
+
+            &:before {
+                position: absolute;
+                content: '';
+                width: 2rem;
+                height: 2rem;
+                left: 1rem;
+                transition: transform @transition-slow ease-out;
+            }
+
+            &:after {
+                position: relative;
+                transform: translateX(0.5rem);
+                width: 2rem;
+                height: 2rem;
+                transition: transform @transition-slow ease-out;
+            }
+
+            @media @lg {
+                &:after {
+                    transform: translateX(0.3785rem) scale(0.6);
+                }
+            }
+            
+            @media @md {
+                &:before {
+                    transform: scale(0.75);
+                }
+                &:after {
+                    transform: translateX(0.3785rem) scale(0.5);
+                }
+            }
+            
+            &.visible {
+                opacity: 0.8;
+                pointer-events: all;
+            }
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .slider-nav-next {
+            left: unset;
+            right: 0;
+            
+            &:before {
+                left: unset;
+                right: 1rem;
+            }
+            
+            &:after {
+                transform: translateX(-0.5rem) rotate(180deg);
+            }
+
+            @media @lg {
+                &:after {
+                    transform: translateX(-0.3785rem) scale(0.6) rotate(180deg);
+                }
+            }
+            
+            @media @md {
+                &:after {
+                    transform: translateX(-0.3785rem) scale(0.5) rotate(180deg);
+                }
+            }
+        }
+    }
+}
+
+// demo content
+
+.container.carousel {
+    
+    max-width: @container-width;
+    margin: 0 auto;
+    
+    .slide {
+        background: fade(@color-primary-200, 10%);
+        user-select: none;
+        -webkit-user-select: none;
+
+        &-image {
+            height: calc(100% - @slide-pricebox-height);
+
+            &--link {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 1;
+                overflow: hidden;
+
+                &:hover img {
+                    transform: scale(1.1);
+                }
+            }
+
+            &--image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform @transition-normal ease-out;
+            }
+        }
+
+        &-price {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            max-height: @slide-pricebox-height;
+            top: calc(100% - @slide-pricebox-height);
+            padding: 0.75rem 1rem 1rem;
+
+            &--title {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1;
+                font-size: 0.8rem;
+                height: 0.8rem;
+                font-weight: 400;
+                margin-bottom: 0.25rem;
+            }
+
+            &--price {
+                line-height: 1.4;
+                display: block;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            &--cta {
+                all: unset;
+                color: @color-white;
+                background-color: @color-primary-300;
+                border: none;
+                position: relative;
+                z-index: 1;
+                cursor: pointer;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                padding: 0;
+                width: 100%;
+                margin-top: auto;
+                white-space: nowrap;
+                min-height: 1.8rem;
+                transition: background-color @transition-normal ease-out;
+                text-align: center;
+
+                &:hover {
+                    background-color: @color-primary-200;
+                }
+            }
+        }
+    }
+    
+    &:last-of-type {
+        margin-top: 4rem;
+    }
+}

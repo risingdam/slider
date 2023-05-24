@@ -1,0 +1,141 @@
+// override to show 6 slides at all breakpoints
+@slides-visible: ~"calc(100% / 6)";
+
+.container.color-variations {
+
+    .swiffy-slider {
+
+        .slider-container {
+            grid-auto-columns: @slides-visible;
+        }
+        
+        @media @lg {
+            &.slider-item-show6 .slider-container {
+                grid-auto-columns: @slides-visible;
+            }
+        }
+
+        @media @md {
+            &.slider-item-show6 .slider-container {
+                grid-auto-columns: @slides-visible;
+            }
+        }
+
+        .slider-nav {
+            top: 50%;
+            transform: translateY(-50%);
+            left: -1.75rem;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            height: 2rem;
+        
+            &:before, &:after {
+                width: 2rem;
+                height: 2rem;
+                transform: scale(0.65);
+                transition: transform @transition-slow ease-out;
+            }
+        
+            &:before {
+                position: absolute;
+                content: '';
+                left: 0.5rem;
+            }
+        
+            &:after {
+                position: relative;
+                transform: scale(0.65);
+            }
+        
+            @media @lg {
+                &:before {
+                    transform: scale(0.75);
+                }
+                &:after {
+                    transform: scale(0.5);
+                }
+            }
+            
+            @media @md {
+                &:before {
+                    transform: scale(0.75);
+                }
+                &:after {
+                    transform: scale(0.5);
+                }
+            }
+            
+            &.visible {
+                opacity: 0.8;
+                pointer-events: all;
+            }
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+        
+        .slider-nav-next {
+            left: unset;
+            right: -1.75rem;
+            
+            &:before {
+                left: unset;
+                right: 0.5rem;
+            }
+            
+            &:after {
+                transform: scale(0.65) rotate(180deg);
+            }
+        
+            @media @lg {
+                &:after {
+                    transform: scale(0.5) rotate(180deg);
+                }
+            }
+            
+            @media @md {
+                &:after {
+                    transform: scale(0.5) rotate(180deg);
+                }
+            }
+        }
+    }
+}
+
+// demo content
+
+.container.color-variations {
+    max-width: 24rem;
+    margin: 0 auto;
+
+    .slide {
+        overflow: hidden;
+        border-left: 2px solid @color-white;
+        border-right: 2px solid @color-white;
+
+        &--link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+
+            &:hover img {
+                transform: scale(1.1);
+            }
+        }
+
+        &--image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform @transition-normal ease-out;
+            pointer-events: none;
+        }
+    }
+
+    &:last-of-type {
+        margin-top: 4rem;
+    }
+}

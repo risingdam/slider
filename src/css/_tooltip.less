@@ -1,0 +1,101 @@
+.tooltip {
+    padding: 0.15rem 0.5rem;
+    background: fade(@color-black, 60%);
+    color: @color-white;
+    position: absolute;
+    border-radius: 0.125rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+    white-space: nowrap;
+
+    &--top-right {
+        top: unset;
+        right: 0;
+        bottom: calc(100% + 0.25rem);
+        left: unset;
+        transform: translateX(0);
+    }
+    
+    &--right {
+        top: 50%;
+        right: unset;
+        bottom: unset;
+        left: calc(100% + 0.25rem);
+        transform: translateY(-50%);
+    }
+    
+    &--bottom-right {
+        top: calc(100% + 0.25rem);
+        right: 0;
+        bottom: unset;
+        left: unset;
+        transform: translateX(0);
+    }
+    
+    // default
+    .bottom() {
+        &--bottom {
+            top: calc(100% + 0.25rem);
+            right: 50%;
+            bottom: unset;
+            left: unset;
+            transform: translateX(50%);
+        }
+    }
+    .bottom();
+    
+    &--bottom-left {
+        top: calc(100% + 0.25rem);
+        right: unset;
+        bottom: unset;
+        left: 0;
+        transform: translateX(0);
+    }
+    
+    &--left {
+        top: 50%;
+        right: calc(100% + 0.25rem);
+        bottom: unset;
+        left: unset;
+        transform: translateY(-50%);
+    }
+    
+    &--top-left {
+        top: unset;
+        right: unset;
+        bottom: calc(100% + 0.25rem);
+        left: 0;
+        transform: translateX(0);
+    }
+    
+    &--top {
+        top: unset;
+        right: 50%;
+        bottom: calc(100% + 0.25rem);
+        left: unset;
+        transform: translateX(50%);
+    }
+    
+    &--center {
+        top: 50%;
+        right: unset;
+        bottom: unset;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    &--fade-in {
+        transition: opacity 500ms ease-out 2000ms;
+        visibility: visible;
+    }
+    
+    // hide on mobile
+    @media @sm {
+        visibility: hidden;
+        pointer-events: none;
+    }
+}

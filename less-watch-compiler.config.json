@@ -1,0 +1,10 @@
+{
+    "watchFolder": "./src/css",
+    "outputFolder": "./dist",
+    "mainFile": "main.less",
+    "includeHidden": true,
+    "sourceMap": true,
+    "enableJs": false,
+    "minified": false,
+    "allowedExtensions": [".less", ".css"]
+}

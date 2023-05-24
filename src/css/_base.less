@@ -1,0 +1,25 @@
+:root * {
+    font-family: system-ui;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 2rem;
+    background: @color-white;
+    
+    &.fullscreen {
+        overflow: hidden;
+    }
+    
+    @media @sm {
+        margin: 1rem;
+    }
+}
+
+ul, li, p {
+    all: unset;
+}

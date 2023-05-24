@@ -1,0 +1,42 @@
+// slider: thumbnails and pricebox are fixed width, slider width is variable
+@container-width: 80rem;
+@thumbnail-slider-thumbnail-width: 6rem;
+@thumbnail-slider-thumbnail-height: 6rem;
+@thumbnail-slider-gap: 1rem;
+
+// example: 7 * 6rem + 6 * 1rem = 48rem
+@number-of-thumbnails: 7;
+@thumbnail-slider-height: @number-of-thumbnails * @thumbnail-slider-thumbnail-height +
+                          (@number-of-thumbnails - 1) * @thumbnail-slider-gap;
+
+@thumbnail-slider-width: @thumbnail-slider-height;
+
+// example: 80rem - 6rem - 1rem - 48rem - 1rem = 24rem
+@thumbnail-slider-pricebox-width: @container-width -
+                                  @thumbnail-slider-thumbnail-width -
+                                  @thumbnail-slider-gap -
+                                  @thumbnail-slider-width -
+                                  @thumbnail-slider-gap;
+
+// fullscreen
+@fulscreen-width: 100%;
+@fulscreen-height: 100%;
+
+// colors
+@color-white: white;
+@color-black: black;
+@color-gray-900:hsl(0,0%,10%);
+@color-primary-200: hsl(0,75%,65%);
+@color-primary-300: hsl(0,50%,50%);
+
+// transitions
+@transition-fast: 100ms;
+@transition-normal: 150ms;
+@transition-slow: 250ms;
+
+// media queries
+@sm:  ~"screen and (max-width:  36rem)"; //  36 * 16 =  576px
+@md:  ~"screen and (max-width:  48rem)"; //  48 * 16 =  768px
+@lg:  ~"screen and (max-width:  62rem)"; //  62 * 16 =  992px
+@xl:  ~"screen and (max-width:  80rem)"; //  80 * 16 = 1280px
+@xxl: ~"screen and (max-width: 100rem)"; // 100 * 16 = 1600px 
