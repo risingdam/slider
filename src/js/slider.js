@@ -1,6 +1,7 @@
 'use strict'
 
 import handleZoom from './zoom'
+import initObservers from './observers'
 import { swiffyslider } from 'swiffy-slider'
 
 let state = {
@@ -192,7 +193,7 @@ const initFullScreen = async (slider, sliderEl, containerClass) => {
         const fullscreenSliderEl = fullscreenSliderDiv.querySelector('.swiffy-slider')
         fullscreenSliderEl.classList.remove('slider-nav-mousedrag'); // bug: mousedrag does not work on a clone
         const enableKeyboardNav = fullscreenSliderEl.hasAttribute('data-enable-keyboard-nav')
-        const fullscreenElement = document.querySelector('.container.'+containerClass+'.fullscreen')
+        const fullscreenElement = document.querySelector('.container.' + containerClass + '.fullscreen')
         const enableZoom = fullscreenSliderEl.hasAttribute('data-enable-zoom')
 
         if (thumbnails) {
@@ -404,8 +405,14 @@ const initSliders = () => {
 
         swiffyslider.initSlider(sliderEl)
     }
+
+    const timeout = setTimeout(() => {
+        initObservers(sliders)
+        clearTimeout(timeout)
+    }, 500)
 }
 
+window.swiffyslider = swiffyslider
 initSliders()
 
 export default newElement

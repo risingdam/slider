@@ -192,6 +192,43 @@
   };
   var zoom_default = handleZoom;
 
+  // src/js/observers.js
+  var initObservers = (sliders) => {
+    if (!sliders)
+      return;
+    for (const slider of sliders) {
+      const disableObservers = slider.hasAttribute("data-disable-observers");
+      if (disableObservers)
+        continue;
+      const buttons = slider.querySelectorAll(".swiffy-slider .slider-nav");
+      if (!buttons)
+        continue;
+      const resizeObserver = new ResizeObserver(() => {
+        updateNavigationButtons();
+        return;
+      });
+      resizeObserver.observe(slider);
+      const mutationObserver = new MutationObserver((mutations) => {
+        if (mutations[0].type === "attributes") {
+          updateNavigationButtons();
+          return;
+        }
+      });
+      mutationObserver.observe(slider, { attributes: true });
+      const updateNavigationButtons = () => {
+        const slideCount = slider.querySelectorAll(".slide").length || 0;
+        const slidesVisible = slider.querySelectorAll(".slide.slide-visible").length || 0;
+        if (slidesVisible < slideCount) {
+          buttons.forEach((button) => button.classList.add("visible"));
+        } else {
+          buttons.forEach((button) => button.classList.remove("visible"));
+        }
+      };
+      updateNavigationButtons();
+    }
+  };
+  var observers_default = initObservers;
+
   // node_modules/swiffy-slider/src/swiffy-slider.esm.js
   var swiffyslider = function() {
     return {
@@ -588,60 +625,13 @@
       }
       swiffyslider.initSlider(sliderEl);
     }
+    const timeout = setTimeout(() => {
+      observers_default(sliders);
+      clearTimeout(timeout);
+    }, 500);
   };
+  window.swiffyslider = swiffyslider;
   initSliders();
   var slider_default = newElement;
-
-  // src/js/carousel.js
-  window.addEventListener("load", () => {
-    const carousels = document.querySelectorAll(".carousel");
-    if (carousels) {
-      for (const carousel of carousels) {
-        const init = () => {
-          const titleEls = carousel.querySelectorAll(".slide-price--title");
-          if (titleEls)
-            titleEls.forEach((el) => el.setAttribute("title", el.innerText));
-        };
-        init();
-      }
-    }
-  });
-
-  // src/js/observers.js
-  window.addEventListener("load", () => {
-    const sliders = document.querySelectorAll(".swiffy-slider");
-    if (!sliders)
-      return;
-    for (const slider of sliders) {
-      const disableObservers = slider.hasAttribute("data-disable-observers");
-      if (disableObservers)
-        continue;
-      const buttons = slider.querySelectorAll(".slider-nav");
-      if (!buttons)
-        continue;
-      const resizeObserver = new ResizeObserver(() => {
-        updateNavigationButtons();
-        return;
-      });
-      resizeObserver.observe(slider);
-      const mutationObserver = new MutationObserver((mutations) => {
-        if (mutations[0].type === "attributes") {
-          updateNavigationButtons();
-          return;
-        }
-      });
-      mutationObserver.observe(slider, { attributes: true });
-      const updateNavigationButtons = () => {
-        const slideCount = slider.querySelectorAll(".slide").length || 0;
-        const slidesVisible = slider.querySelectorAll(".slide.slide-visible").length || 0;
-        if (slidesVisible < slideCount) {
-          buttons.forEach((button) => button.classList.add("visible"));
-        } else {
-          buttons.forEach((button) => button.classList.remove("visible"));
-        }
-      };
-      updateNavigationButtons();
-    }
-  });
 })();
 //# sourceMappingURL=main.js.map
