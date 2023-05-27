@@ -1,7 +1,9 @@
 # Slider
 
-A gallery and carousel slider implementation based on swiffyslider.
-Examples based on sliders used in the JMP rebuild project.
+* A gallery and carousel slider implementation based on swiffyslider
+* Examples based on sliders used in the JMP rebuild project
+* Uses swiffyslider built-in styling based on classes with some overrides
+* Uses data attributes for JavaScript configuration
 
 ## Gallery
 
