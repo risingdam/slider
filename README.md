@@ -38,6 +38,12 @@ Link: [color-variants.html](color-variants.html)
 
 ### Build scripts
 
-* Less to css bundle with `npm run watch`
-* JavaScript to js bundle with `npm run watch-js`
+**CSS**
 
+* Less to css compile with `npm run build-css`
+* Live reload with `npm run watch-css`
+
+**JavaScript**
+
+* JavaScript compile with `npm run build-js`
+* Live reload with `npm run watch-js`
