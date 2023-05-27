@@ -42,8 +42,10 @@ Link: [color-variants.html](color-variants.html)
 
 * Less to css compile with `npm run build-css`
 * Live reload with `npm run watch-css`
+* Used `less-watch-compiler`
 
 **JavaScript**
 
 * JavaScript compile with `npm run build-js`
 * Live reload with `npm run watch-js`
+* Uses `esbuild`
