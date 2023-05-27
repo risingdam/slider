@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "compile": "lessc slider.less slider.css",
-    "build": "./node_modules/.bin/esbuild src/js/main.js --bundle --sourcemap --outfile=dist/main.js",
-    "watch": "less-watch-compiler",
+    "build-css": "lessc slider.less slider.css",
+    "build-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --sourcemap --outfile=dist/main.js",
+    "watch-css": "less-watch-compiler",
     "watch-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --sourcemap --watch --outfile=dist/main.js"
   },
   "devDependencies": {
