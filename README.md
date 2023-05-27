@@ -12,7 +12,8 @@
 * Details below the gallery
 * A fullscreen and zoom-in option with key commands (Alt-Z and Alt-F)
 * The fullscreen option uses the OS fullscreen view if allowed
-* The zoom-in option uses a 2d cancas element for GPU performance
+* The zoom-in option uses a 2d canvas element for GPU performance
+  * Uses mouse events and touch events for pan and zoom
 * Keyboard navigation with arrow keys, home, end and page up/down keys
 * Uses modern CSS and lightweight JavaScript
 * Thumbnails and slider navigation synchronized
