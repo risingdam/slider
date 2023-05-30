@@ -6,5 +6,6 @@
     "sourceMap": true,
     "enableJs": false,
     "minified": false,
-    "allowedExtensions": [".less", ".css"]
+    "allowedExtensions": [".less", ".css"],
+    "plugins": "less-plugin-autoprefix"
 }
