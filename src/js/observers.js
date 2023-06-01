@@ -6,28 +6,26 @@
  */
 const initObservers = (sliders) => {
 
-    if (!sliders) return // no sliders on page, no observers required
+    if (!sliders) return
 
     for (const slider of sliders) {
 
         const disableObservers = slider.hasAttribute('data-disable-observers')
-        if (disableObservers) continue // disable observers for this slider
+        if (disableObservers) continue
 
         const buttons = slider.querySelectorAll('.swiffy-slider .slider-nav')
-        if (!buttons) continue // no nav buttons, no observers required
+        if (!buttons) continue
 
         const resizeObserver = new ResizeObserver(() => {
-            // console.log('ResizeObserver')
             updateNavigationButtons()
-            return // exit after first resize event
+            return
         });
         resizeObserver.observe(slider);
 
         const mutationObserver = new MutationObserver((mutations) => {
             if (mutations[0].type === "attributes") {
-                // console.log('MutationObserver')
                 updateNavigationButtons()
-                return // exit after first mutation event
+                return
             }
         })
         mutationObserver.observe(slider, { attributes: true })
@@ -35,7 +33,6 @@ const initObservers = (sliders) => {
         const updateNavigationButtons = () => {
             const slideCount = slider.querySelectorAll('.slide').length || 0
             const slidesVisible = slider.querySelectorAll('.slide.slide-visible').length || 0
-            // console.log(slideCount, slidesVisible)
 
             if (slidesVisible < slideCount) {
                 buttons.forEach((button) => button.classList.add('visible'))

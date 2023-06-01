@@ -538,16 +538,18 @@
           thumbnails[i].classList.add("active");
           state.activeSlide = i;
           if (thumbnailsToShow !== 0 && i >= thumbnailsToShow - 1) {
-            for (const thumbnail of thumbnails) {
+            thumbnails[i].removeAttribute("data-count");
+            thumbnails.forEach((thumbnail) => {
               thumbnail.classList.add("visible");
-              thumbnail.removeAttribute("data-count");
-              thumbnailsContainer.classList.add("scroll");
-            }
+            });
           }
           thumbnails[i].parentNode.scrollTop = thumbnails[i].offsetTop;
+          if (thumbnailsToShow !== 0 && i >= thumbnailsToShow - 1) {
+            thumbnails[i].parentNode.classList.add("scroll");
+          }
         }
       }
-    }, 150);
+    }, 25);
     for (const [i, el] of Array.from(thumbnails).entries()) {
       if (i === 0)
         el.classList.add("active");
