@@ -1,13 +1,17 @@
 {
   "browserslist": [
+    "> 3%",
     "last 2 versions",
-    "> 5%"
+    "not dead",
+    "not ie > 1"
   ],
   "scripts": {
-    "build-css": "lessc slider.less slider.css",
-    "build-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --sourcemap --outfile=dist/main.js",
+    "build-css": "less-watch-compiler --run-once",
     "watch-css": "less-watch-compiler",
-    "watch-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --sourcemap --watch --outfile=dist/main.js"
+    "build-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --platform=browser --format=iife --target=es6 --minify --outfile=dist/main.js",
+    "watch-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --platform=browser --format=iife --target=es6 --sourcemap --watch --outfile=dist/main.js",
+    "build": "",
+    "watch": ""
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

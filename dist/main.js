@@ -1,4 +1,25 @@
 (() => {
+  var __async = (__this, __arguments, generator) => {
+    return new Promise((resolve, reject) => {
+      var fulfilled = (value) => {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      };
+      var rejected = (value) => {
+        try {
+          step(generator.throw(value));
+        } catch (e) {
+          reject(e);
+        }
+      };
+      var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+      step((generator = generator.apply(__this, __arguments)).next());
+    });
+  };
+
   // src/js/zoom.js
   var trackTransforms = (context) => {
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -61,7 +82,7 @@
       return pt.matrixTransform(xform.inverse());
     };
   };
-  var handleZoom = async (slider, imageSource) => {
+  var handleZoom = (slider, imageSource) => __async(void 0, null, function* () {
     if (!slider || !imageSource)
       return;
     let canvas = slider_default("canvas", ["image-pan", "image-zoom"]);
@@ -73,7 +94,7 @@
     canvas.height = canvas.scrollHeight;
     let image = new Image();
     image.src = imageSource;
-    await image.decode();
+    yield image.decode();
     let context = canvas.getContext("2d");
     trackTransforms(context);
     const redraw = () => {
@@ -189,7 +210,7 @@
       canvas2.height = canvas2.scrollHeight;
       redraw();
     };
-  };
+  });
   var zoom_default = handleZoom;
 
   // src/js/observers.js
@@ -454,11 +475,11 @@
     }
     sliderIndicators.classList.add("visible");
   };
-  var initFullScreen = async (slider, sliderEl, containerClass) => {
+  var initFullScreen = (slider, sliderEl, containerClass) => __async(void 0, null, function* () {
     const buttonEnlarge = slider.querySelector(".action.enlarge");
     if (!buttonEnlarge)
       return;
-    await buttonEnlarge.addEventListener("click", async () => {
+    yield buttonEnlarge.addEventListener("click", () => __async(void 0, null, function* () {
       const fullscreenSliderDiv = newElement("div", ["container", containerClass, "fullscreen"]);
       const rowEl = newElement("div", "row");
       const columnEl = newElement("div", ["column", "slider"]);
@@ -491,7 +512,7 @@
       document.body.classList.add("fullscreen");
       if (document.fullscreenEnabled) {
         if (!document.fullscreenElement) {
-          await fullscreenElement.requestFullscreen();
+          yield fullscreenElement.requestFullscreen();
         } else {
           document.exitFullscreen();
         }
@@ -515,9 +536,9 @@
       if (enableZoom) {
         initZoom(fullscreenElement, fullscreenSliderEl);
       }
-    });
+    }));
     buttonEnlarge.classList.add("visible");
-  };
+  });
   var initThumbnails = (slider, sliderEl) => {
     const thumbnailLoadCount = sliderEl.hasAttribute("data-thumbnail-load");
     const thumbnailsContainer = slider.querySelector(".slider-thumbnails ul");
