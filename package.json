@@ -21,7 +21,6 @@
     "less-plugin-autoprefix": "^2.0.0",
     "less-watch-compiler": "^1.16.3",
     "postcss": "^8.4.24",
-    "prettier": "^2.8.8",
     "swiffy-slider": "^1.6.0"
   }
 }

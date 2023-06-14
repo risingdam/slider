@@ -8,7 +8,7 @@
         .slider-container {
             grid-auto-columns: @slides-visible;
         }
-        
+
         @media @lg {
             &.slider-item-show6 .slider-container {
                 grid-auto-columns: @slides-visible;
@@ -29,72 +29,75 @@
             opacity: 0;
             pointer-events: none;
             height: 2rem;
-        
-            &:before, &:after {
+
+            &:before,
+            &:after {
                 width: 2rem;
                 height: 2rem;
                 transform: scale(0.65);
                 transition: transform @transition-slow ease-out;
             }
-        
+
             &:before {
                 position: absolute;
                 content: '';
                 left: 0.5rem;
             }
-        
+
             &:after {
                 position: relative;
                 transform: scale(0.65);
             }
-        
+
             @media @lg {
                 &:before {
                     transform: scale(0.75);
                 }
+
                 &:after {
                     transform: scale(0.5);
                 }
             }
-            
+
             @media @md {
                 &:before {
                     transform: scale(0.75);
                 }
+
                 &:after {
                     transform: scale(0.5);
                 }
             }
-            
+
             &.visible {
                 opacity: 0.8;
                 pointer-events: all;
             }
-            
+
             &:hover {
                 opacity: 1;
             }
         }
-        
+
         .slider-nav-next {
             left: unset;
             right: -1.75rem;
-            
+
             &:before {
                 left: unset;
                 right: 0.5rem;
             }
-            
+
             &:after {
                 transform: scale(0.65) rotate(180deg);
             }
-        
+
             @media @lg {
                 &:after {
                     transform: scale(0.5) rotate(180deg);
                 }
             }
-            
+
             @media @md {
                 &:after {
                     transform: scale(0.5) rotate(180deg);

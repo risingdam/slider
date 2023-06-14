@@ -25,7 +25,8 @@
             opacity: 0.8;
             transition: opacity @transition-normal ease-out;
 
-            &:before, &:after {
+            &:before,
+            &:after {
                 content: '';
                 position: absolute;
                 width: 90%;
@@ -39,7 +40,7 @@
                 transform: rotate(-45deg);
             }
 
-            &:hover{
+            &:hover {
                 opacity: 1;
 
                 .tooltip {
@@ -92,7 +93,8 @@
             visibility: hidden;
             pointer-events: none;
 
-            &:before, &:after {
+            &:before,
+            &:after {
                 content: '';
                 position: absolute;
                 border: 3px solid @color-white;
@@ -163,6 +165,7 @@
                 &:before {
                     transform: scale(0.75);
                 }
+
                 &:after {
                     transform: translateX(0.3785rem) scale(0.5);
                 }
