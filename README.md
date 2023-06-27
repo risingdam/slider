@@ -45,10 +45,16 @@ Link: [color-variants.html](color-variants.html)
 
 * Less to css compile with `npm run build-css`
 * Live reload with `npm run watch-css`
-* Used `less-watch-compiler`
+* Uses `less-watch-compiler`
 
 **JavaScript**
 
 * JavaScript compile with `npm run build-js`
 * Live reload with `npm run watch-js`
 * Uses `esbuild`
+
+### To fix
+
+* Zoom funtion (canvas svg) is not always initialised properly
+* Fullscreen view immediately switches back to normal in Chrome
+* When returning from fullscreen the gallery slider image is not sized properly
