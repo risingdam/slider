@@ -1,3 +1,4 @@
 {
-  "prettier.module.path" : "\/Users\/rsdadm\/Documents\/Sites\/slider-module\/node_modules\/prettier"
+  "prettier.module.path" : "\/Users\/rsdadm\/Documents\/Sites\/slider-module\/node_modules\/prettier",
+  "workspace.name" : "Slider"
 }
