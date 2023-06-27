@@ -9,9 +9,7 @@
     "build-css": "less-watch-compiler --run-once",
     "watch-css": "less-watch-compiler",
     "build-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --platform=browser --format=iife --target=es6 --minify --outfile=dist/main.js",
-    "watch-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --platform=browser --format=iife --target=es6 --sourcemap --watch --outfile=dist/main.js",
-    "build": "",
-    "watch": ""
+    "watch-js": "./node_modules/.bin/esbuild src/js/main.js --bundle --platform=browser --format=iife --target=es6 --sourcemap --watch --outfile=dist/main.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
