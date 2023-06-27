@@ -2,10 +2,6 @@
 
 .container.carousel {
 
-    &:last-of-type {
-        margin-top: 2rem;
-    }
-
     &.fullscreen {
         max-width: @fulscreen-width;
         margin: 0;
@@ -211,6 +207,10 @@
             }
         }
     }
+}
+
+.container.carousel + .container.carousel {
+    margin-top: 2rem;
 }
 
 // demo content

@@ -798,9 +798,6 @@ ul.menu {
   -webkit-filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.4)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
           filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.4)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
 }
-.container.carousel:last-of-type {
-  margin-top: 2rem;
-}
 .container.carousel.fullscreen {
   max-width: 100%;
   margin: 0;
@@ -985,6 +982,9 @@ ul.menu {
     -webkit-transform: translateX(-0.3785rem) scale(0.5) rotate(180deg);
             transform: translateX(-0.3785rem) scale(0.5) rotate(180deg);
   }
+}
+.container.carousel + .container.carousel {
+  margin-top: 2rem;
 }
 .container.carousel.fullscreen,
 .container.carousel {
@@ -1583,9 +1583,6 @@ ul.menu {
   -webkit-transform: translateX(-50%) scale(1) !important;
           transform: translateX(-50%) scale(1) !important;
 }
-.container.color-variations:last-of-type {
-  margin-top: 2rem;
-}
 .container.color-variations .swiffy-slider .slider-container {
   grid-auto-columns: calc(100% / 6);
 }
@@ -1679,6 +1676,9 @@ ul.menu {
     -webkit-transform: scale(0.5) rotate(180deg);
             transform: scale(0.5) rotate(180deg);
   }
+}
+.container.color-variations + .container.color-variations {
+  margin-top: 2rem;
 }
 .container.color-variations {
   max-width: 24rem;
